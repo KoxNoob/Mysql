@@ -1,0 +1,18 @@
+### Pour définir une contrainte étrangère et éviter des modifications qui altèreraient les données ###
+## Si la table et les champs sont déja créés ##
+
+ALTER TABLE wizard
+ADD CONSTRAINT fk_wizard_school
+FOREIGN KEY (school_id)
+REFERENCES school(id);
+
+## Si la table n'est pas créé ##
+
+CREATE TABLE wizard (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    CONSTRAINT fk_wizard_school      
+        FOREIGN KEY (school_id)             
+        REFERENCES school(id)    
+);
