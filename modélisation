@@ -16,3 +16,10 @@ CREATE TABLE wizard (
         FOREIGN KEY (school_id)             
         REFERENCES school(id)    
 );
+
+
+### Règles de création des clés étrangères ###
+
+1-1 : Il faut créer celle qui sera la plus pratique à l'utilisation de la BDD
+n-1 : il faut ajouter la clé dans la table ayant la plus faible cardinalité
+n-m : création d'une table supplémentaire
