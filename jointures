@@ -1,0 +1,12 @@
+
+### Permet d'afficher les noms et prénoms et le nom d'école des en reliant les tables wizard et school ###
+
+mysql> SELECT firstname, lastname, name
+FROM wizard 
+JOIN school ON school.id=wizard.school_id;
+
+### Idem que précédemment mais avec utilisation des alias ###
+
+mysql> SELECT w.firstname, w.lastname, s.name school_name
+FROM wizard w
+JOIN school s ON s.id=w.school_id;
