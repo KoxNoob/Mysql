@@ -18,3 +18,51 @@ JOIN school s ON s.id=w.school_id;
     FROM students
     LEFT OUTER JOIN student_projects
     ON students.id = student_projects.student_id;
+    
+ 
+### Now, create another query that will result in one row per each customer, with their name, email, and total 
+amount of money they've spent on orders. Sort the rows according to the total money spent, from the most spent to the least spent ###
+
+SELECT customers.name, customers.email, SUM(orders.price)
+    FROM customers
+    LEFT OUTER JOIN orders ON orders.customer_id=customers.id
+    GROUP BY customers.name
+    ORDER BY orders.price DESC
+    
+###  self join ###
+SELECT id, first_name, last_name, buddy_id FROM students;
+
+SELECT students.first_name, students.last_name, buddies.email as buddy_email
+    FROM students
+    JOIN students buddies
+    ON students.buddy_id = buddies.id;
+    
+    
+### We've created a table with all the 'Harry Potter' movies, with a sequel_id column that matches the id of the sequel for each movie. 
+Issue a SELECT that will show the title of each movie next to its sequel's title (or NULL if it doesn't have a sequel). ###
+
+SELECT id, title, sequel_id FROM movies;
+
+SELECT movies.title, sequels.title AS "sequel's title"
+    FROM movies
+    LEFT OUTER JOIN movies sequels
+    ON movies.sequel_id=sequels.id;
+    
+    
+ 
+### Combiner plusieurs JOIN ###
+
+SELECT a.title, b.title FROM project_pairs
+    JOIN student_projects a
+    ON project_pairs.project1_id = a.id
+    JOIN student_projects b
+    ON project_pairs.project2_id = b.id;
+    
+    
+ ### Now, use another SELECT with a JOIN to show the names of each pair of friends, based on the data in the friends table. ###
+ SELECT a.fullname, b.fullname FROM friends
+    JOIN persons a 
+    ON friends.person1_id=a.id
+    JOIN persons b
+    ON friends.person2_id=b.id
+    
