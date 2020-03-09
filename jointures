@@ -10,3 +10,11 @@ JOIN school ON school.id=wizard.school_id;
 mysql> SELECT w.firstname, w.lastname, s.name school_name
 FROM wizard w
 JOIN school s ON s.id=w.school_id;
+
+
+### Demande d'afficher les projets des students, même s'ils n'en ont pas (le left agit sur la table students) ###
+
+ SELECT students.first_name, students.last_name, student_projects.title
+    FROM students
+    LEFT OUTER JOIN student_projects
+    ON students.id = student_projects.student_id;
