@@ -41,13 +41,9 @@ SELECT students.first_name, students.last_name, buddies.email as buddy_email
 ### We've created a table with all the 'Harry Potter' movies, with a sequel_id column that matches the id of the sequel for each movie. 
 Issue a SELECT that will show the title of each movie next to its sequel's title (or NULL if it doesn't have a sequel). ###
 
-SELECT id, title, sequel_id FROM movies;
-
-SELECT movies.title, sequels.title AS "sequel's title"
-    FROM movies
-    LEFT OUTER JOIN movies sequels
-    ON movies.sequel_id=sequels.id;
-    
+SELECT movies.title, sequels.title FROM movies
+LEFT JOIN movies sequels
+ON sequels.id=movies.sequel_id
     
  
 ### Combiner plusieurs JOIN ###
